@@ -1,0 +1,373 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+/**
+ * Developed by Northeastern University NeuSoftLab
+ *
+ * changed by WangZhigang at 2011-11-21
+ * 
+ */
+-->
+<configuration>
+  <property>
+    <name>bcbsp.controller.address</name>
+    <value>Master.Hadoop:40000</value>
+    <description>
+                 The address of the bcbsp controller server. Either the
+                 literal string "local" or a host:port for distributed mode
+    </description>
+  </property>
+
+  <property>
+    <name>bcbsp.workermanager.staff.max</name>
+     <value>10</value>
+    <description>The max number of staffs running on one worker manager.</description>
+  </property>
+
+  <property>
+    <name>bcbsp.workermanager.rpc.port</name>
+     <value>50000</value>
+    <description>The port an worker manager server binds to.</description>
+  </property>
+
+  <property>
+    <name>bcbsp.workermanager.report.address</name>
+    <value>127.0.0.1:0</value>
+    <description>The interface and port that groom server listens on. 
+                 Since it is only connected to by the tasks, it uses the local interface.
+                 EXPERT ONLY. Should only be changed if your host does not have the loopback interface.
+    </description>
+  </property>
+
+  <property>
+    <name>bcbsp.workeragent.port</name>
+     <value>61000</value>
+    <description>The port an worker agent server binds to.</description>
+  </property>
+  
+  <property>
+    <name>fs.default.name</name>
+    <value>hdfs://Master.Hadoop:9000/</value>
+    <description>
+                 The name of the default file system. Either the literal string
+                 "local" or a host:port for HDFS.
+    </description>
+  </property>
+
+  <property>
+    <name>bcbsp.share.dir</name>
+    <value>${hadoop.tmp.dir}/bcbsp/share</value>
+    <description>The shared directory where BSP stores control files.</description>
+  </property>
+
+  <property>
+    <name>bcbsp.local.dir</name>
+    <value>${hadoop.tmp.dir}/bcbsp/local</value>
+    <description> local directory for temporal store</description> 
+  </property>
+  
+  <property>
+    <name>bcbsp.zookeeper.quorum</name>
+    <value>Master.Hadoop</value>
+    <description>
+                 Comma separated list of servers in the ZooKeeper Quorum.
+                 For example, "hostName1,hostName2".
+    </description>
+  </property>
+
+  <property>
+    <name>bcbsp.zookeeper.clientPort</name>
+    <value>2181</value>
+    <description>
+                 Property from ZooKeeper's config zoo.cfg.
+                 The port at which the clients will connect.
+    </description>
+  </property>
+  
+  <property>
+    <name>bcbsp.heartbeat.interval</name>
+    <value>1000</value>
+    <description>The interval of heart beat in millsecond.</description>
+  </property>
+
+  <property>
+    <name>bcbsp.heartbeat.timeout</name>
+    <value>30000</value>
+    <description>The threshold of time out for heart beat in millsecond.</description>
+  </property>
+
+  <property>
+    <name>bcbsp.checkpoint.frequency</name>
+    <value>5</value>
+    <description>
+                 The default frequency of checkpoint.
+                 For a certain job, users can define the special frequency.
+                 If the value is 0, that means this function is disabled.
+    </description>
+  </property>
+  <property>
+    <name>bcbsp.assValuesCheckpoint</name>
+    <value>false</value>
+    <description>
+                If the user need to backup the the other staff 
+                info incase of recory.
+    </description>
+  </property>
+   <property>
+    <name>bcbsp.checkpoint.type</name>
+    <value>HDFS</value>
+    <description>
+    </description>
+  </property>
+  
+  <property>
+    <name>bcbsp.checkpoint.dir</name>
+    <value>${hadoop.tmp.dir}/bcbsp/checkpoint</value>
+    <description>The directory used for checkpoint.</description>
+  </property>
+
+  <property>
+    <name>bcbsp.recovery.attempt.max</name>
+    <value>3</value>
+    <description>
+                 If a job is fault, the cluster will attempt to recovery it.
+                 However, if the number of attempt is up to the threshold,
+                 then stop attempting to recovery it and fail it.
+    </description>
+  </property>
+
+  <property>
+    <name>bcbsp.max.faied.job.worker</name>
+    <value>5</value>
+    <description>The maximum of failed job on one worker.</description>
+  </property>
+
+  <property>
+    <name>bcbsp.worker.sleep.timeout</name>
+    <value>60000</value>
+    <description>The maximum of sleeping time for the gray worker</description>
+  </property>
+
+  <property>
+    <name>bsp.child.java.opts</name>
+    <value>-Xmx1000m</value>
+    <description>Java opts for the worker server child processes.</description>
+  </property>
+  <property>
+    <name>bsp.http.infoserver.port</name>
+    <value>40026</value>
+    <description>HTTP server port.</description>
+  </property>
+  <property>
+    <name>bcbsp.http.winfoserver.port</name>
+    <value>40027</value>
+    <description>HTTP server port.</description>
+  </property>
+
+  <property>
+    <name>bsp.http.infoserver.webapps</name>
+    <value>/application/bc-bsp-0.1/webapps</value>
+    <description>Path of web pages.</description>
+  </property>
+  <property>
+    <name>bcbsp.log.dir</name>
+    <value>/application/bc-bsp-0.1/logs</value>
+    <description>Path of web pages.</description>
+  </property>
+  <property>
+    <name>bcbsp.userlogs.dir</name>
+    <value>/application/bc-bsp-0.1/logs/userlogs</value>
+    <description>Path of web pages.</description>
+  </property>
+<property>
+    <name>bcbsp.adjust.threshold0</name>
+    <value>10</value>
+    <description>the value of adjust threshold0</description>
+  </property>
+<property>
+    <name>bcbsp.adjust.threshold1</name>
+    <value>20</value>
+    <description>the value of adjust threshold1</description>
+  </property>
+<property>
+    <name>bcbsp.adjust.threshold2</name>
+    <value>30</value>
+    <description>the value of adjust threshold2</description>
+  </property>
+<property>
+    <name>bcbsp.adjust.threshold3</name>
+    <value>40</value>
+    <description>the value of adjust threshold4</description>
+  </property>
+  <!-- Just for HA -->
+  <property>
+    <name>bcbsp.halog.dir</name>
+    <value>${hadoop.tmp.dir}/bcbsp/ha/</value>
+  </property>
+
+  <!-- Just for LoadBalance -->
+  <property>
+    <name>bcbsp.loadbalance</name>
+    <value>false</value>
+  </property>
+
+  <property>
+    <name>bcbsp.loadbalance.findslowstaff.maxturn</name>
+    <value>2</value>
+  </property>
+
+  <!-- Just using HBase for input and output -->
+  <property>
+	<name>hbase.master</name>
+	<value>Master.Hadoop:60000</value>
+  </property>
+
+  <property>
+	<name>hbase.zookeeper.quorum</name>
+	<value>Master.Hadoop</value>
+  </property>
+
+  <property>
+  	<name>hbase.mapreduce.inputtable</name>
+	<value>graph_input</value>
+	 <description>The name of input table.</description>
+  </property>
+
+  <property>
+  	<name>hbase.outputtable</name>
+	<value>graph_output</value>
+	 <description>The name of output table.</description>
+  </property>
+
+   <property>
+  	<name>hbase.mapreduce.scan.column.family.input</name>
+	<value>BorderNode</value>
+	 <description>column family for HBase.</description>
+  </property>
+
+   <property>
+  	<name>hbase.mapreduce.scan.columns.input</name>
+	<value>nodeData</value>
+	 <description>colunm for HBase.</description>
+  </property>
+
+  <!-- Just HBase configuration-->
+ 
+  <property>
+	<name>hbase.rootdir</name>
+	<value>Master.Hadoop:9000/hbase</value>
+  </property>
+
+  <property>
+	<name>hbase.cluster.distributed</name>
+	<value>true</value>
+  </property>
+	
+  <property>
+  	<name>hbase.master.port</name>
+	<value>60000</value>
+  </property>
+
+  <property>
+	<name>hbase.zookeeper.property.dataDir</name>
+	<value>/application/zookeeper-3.4.3/data</value>
+  </property>
+
+  <!-- Just Titan configuration-->
+  <property>
+	<name>titan.server.address</name>
+	<value>192.168.1.2</value>
+  </property>
+
+  <property>
+	<name>titan.input.table.name</name>
+	<value>graph_input</value>
+  </property>
+  
+  <property>
+	<name>hbase.input.table.name</name>
+	<value>graph_input</value>
+  </property>
+	
+  <property>
+	<name>titan.output.table.name</name>
+	<value>graph_output</value>
+  </property>
+  
+  <property>
+	<name>hbase.output.table.name</name>
+	<value>graph_output</value>
+  </property>
+
+  <property>
+  	<name>hbase.master.address</name>
+	<value>192.168.1.2</value>
+  </property>
+
+<!--just for web configuration-->
+
+<property>
+    <name>bsp.http.ganglia.ip</name>
+    <value>192.168.1.2</value>
+    <description>ganglia server ip.</description>
+  </property>
+  <property>
+    <name>bsp.http.bspmaster.ip</name>
+    <value>192.168.1.2</value>
+    <description>ganglia server ip.</description>
+  </property>
+  <property>
+    <name>bsp.http.infoserver.port</name>
+    <value>40026</value>
+    <description>HTTP server port.</description>
+  </property>
+  <property>
+    <name>bcbsp.http.winfoserver.port</name>
+    <value>40027</value>
+    <description>HTTP server port.</description>
+  </property>
+
+  <property>
+    <name>bsp.http.infoserver.webapps</name>
+    <value>/application/bc-bsp-0.1/webapps</value>
+    <description>Path of web pages.</description>
+  </property>
+  <property>
+    <name>bcbsp.log.dir</name>
+    <value>/application/bc-bsp-0.1/logs</value>
+    <description>Path of web pages.</description>
+  </property>
+  <property>
+    <name>bcbsp.userlogs.dir</name>
+    <value>/application/bc-bsp-0.1/logs/userlogs</value>
+    <description>Path of web pages.</description>
+  </property>
+  <property>
+    <name>bcbsp.graphdata.dir</name>
+    <value>/application/bc-bsp-0.1/graphdata</value>
+    <description>Path of web pages.</description>
+  </property>
+ <!--just for web-end-->
+<!--just for emai send-->
+<property>
+    <name>bcbsp.email.address</name>
+    <value>bcbspadministrator@126.com</value>
+    <description>the email address of exception sender</description>
+  </property>
+<property>
+    <name>bcbsp.email.password</name>
+    <value>bcbsp123</value>
+    <description>the password of email</description>
+  </property>
+<property>
+    <name>bcbsp.useremail.address</name>
+    <value>15140054529@139.com</value>
+    <description>address of user email</description>
+  </property>
+<property>
+    <name>bcbsp.emailsend.flag</name>
+    <value>true</value>
+    <description>flag of send email</description>
+  </property>
+<!--end of email send-->
+</configuration>
